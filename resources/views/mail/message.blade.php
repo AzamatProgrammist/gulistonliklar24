@@ -1,0 +1,1 @@
+<h2>Murojat qoldirildi - {{ $data['name'] }}</h2>
