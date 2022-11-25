@@ -58,7 +58,7 @@
                             <td>{{ $post->title_uz }}</td>
                             <td class="align-middle">
 
-                              {{ $post->category->name_uz }}
+                              {{ $post->category['name_uz'] }}
                             
                             </td>
                              <td class="align-middle">
