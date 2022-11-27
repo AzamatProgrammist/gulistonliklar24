@@ -7,15 +7,17 @@
           </div>
           <ul class="sidebar-menu">
             <li class="menu-header">Main</li>
+            @role('admin')
             <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i
                   data-feather="briefcase"></i><span>Adminstratsiya</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="widget-chart.html">Users</a></li>
-                <li><a class="nav-link" href="widget-data.html">Roles</a></li>
+                <li><a class="nav-link" href="{{ route('admin.users.index') }}">Users</a></li>
+                <li><a class="nav-link" href="{{ route('admin.roles.index') }}">Roles</a></li>
                 <li><a class="nav-link" href="widget-data.html">Permissions</a></li>
               </ul>
             </li>
+            @endrole
             <li class="dropdown">
               <a href="{{ route('admin.dashboard')}}" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
             </li>

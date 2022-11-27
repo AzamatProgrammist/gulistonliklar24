@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Admin\AdsController;
+use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\RolesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +37,10 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function(){
     Route::resource('posts', PostsController::class);
     Route::resource('tags', TagsController::class);
     Route::resource('ads', AdsController::class);
+    Route::group(['middleware' => ['role:admin']], function () {
+        Route::resource('users', UsersController::class);
+        Route::resource('roles', RolesController::class);
+    });
     Route::post('/post-image-upload', [PostsController::class, 'upload'])->name('upload');
     Route::get('/dashboard', function () {
     return view('admin.dashboard');
