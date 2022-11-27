@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class RolesController extends Controller
 {
@@ -14,7 +15,8 @@ class RolesController extends Controller
      */
     public function index()
     {
-        
+        $roles = Role::all();
+        return view('admin.roles.index', compact('roles'));
     }
 
     /**
@@ -24,7 +26,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.roles.create');
     }
 
     /**
@@ -35,7 +37,13 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string'],
+        ]);
+        Role::create([
+            'name' => $request->name,
+        ]);
+        return redirect()->route('admin.roles.index');
     }
 
     /**
