@@ -32,12 +32,18 @@
                         <tbody><tr>
                           <th>#</th>
                           <th>Name</th>
+                          <th>Permissions</th>
                           <th>Action</th>
                         </tr>
                         @foreach($roles as $role)
                         <tr>
                           <td>{{ $loop->iteration}}</td>
                           <td>{{ $role->name}}</td>
+                          <td>
+                            @foreach($role->permissions as $permission)
+                              {{ $permission->name }},
+                            @endforeach
+                          </td>
                           <td>
                             
                             <a href="{{ route('admin.roles.edit', $role->id) }}" class="btn btn-info">Edit</a>
