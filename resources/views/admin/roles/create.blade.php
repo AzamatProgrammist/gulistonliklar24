@@ -19,6 +19,13 @@
             <label>Name</label>
             <input type="text" name="name" class="form-control">
           </div>
+          <div class="section-title">Permissions</div>
+            <div class="form-group">
+              @foreach($permissions as $permission)
+                <input type="checkbox" name="permissions[]" value="{{ $permission->id }}">
+                <span>{{ $permission->name }}</span> &nbsp &nbsp
+              @endforeach
+            </div>
           <div class="card-footer text-right">
             <button class="btn btn-primary mr-1" type="submit">Save</button>
           </div>
